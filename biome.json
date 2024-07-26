@@ -16,7 +16,9 @@
 			"semicolons": "asNeeded",
 			"trailingCommas": "none",
 			"lineEnding": "lf",
-			"lineWidth": 90
+			"lineWidth": 90,
+			"indentStyle": "space",
+			"indentWidth": 2
 		}
 	}
 }
