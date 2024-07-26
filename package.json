@@ -6,7 +6,10 @@
 	},
 	"scripts": {
 		"test:main-watch": "pnpm -C main test:watch",
-		"test:main-once": "pnpm -C main test:once"
+		"test:main-once": "pnpm -C main test:once",
+		"lint:all": "pnpx @biomejs/biome lint",
+		"format:all": "pnpx @biomejs/biome format --write",
+		"check:all": "pnpx @biomejs/biome check --write"
 	},
 	"license": "MIT",
 	"devDependencies": {
