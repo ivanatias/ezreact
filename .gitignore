@@ -1,1 +1,4 @@
 **/node_modules/*
+packages/main/src/manual-test.tsx
+packages/main/src/main.tsx
+packages/main/src/index.css
