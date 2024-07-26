@@ -1,0 +1,4 @@
+packages:
+  - main 
+  - cli
+  - docs

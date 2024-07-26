@@ -1,11 +1,13 @@
 {
-	"name": "ezreact",
-	"version": "1.0.0",
-	"description": "Collection of React utilities (hooks and components) that you can copy and paste in your projects for easier and faster development of React applications.",
-	"author": "Ivan Atias",
-	"main": "index.js",
-	"scripts": {},
-	"keywords": ["React", "Hooks", "Components", "Utilities", "Collection"],
+	"name": "ezreact-root",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ivanatias/ezreact.git"
+	},
+	"scripts": {
+		"test:main-watch": "pnpm -C main test:watch",
+		"test:main-once": "pnpm -C main test:once"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",

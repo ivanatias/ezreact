@@ -1,18 +1,27 @@
 {
-	"name": "main",
+	"name": "ezreact",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite"
+		"dev": "vite",
+		"test:watch": "vitest",
+		"test:once": "vitest run"
 	},
 	"dependencies": {
+		"ezreact-root": "workspace:*",
 		"react": "18.3.1",
 		"react-dom": "18.3.1"
 	},
 	"devDependencies": {
+		"@testing-library/dom": "10.4.0",
+		"@testing-library/jest-dom": "6.4.8",
+		"@testing-library/react": "16.0.0",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
+		"@vitejs/plugin-react": "4.3.1",
+		"@vitejs/plugin-react-swc": "3.5.0",
+		"happy-dom": "14.12.3",
 		"typescript": "5.2.2",
 		"vite": "5.3.1"
 	}
