@@ -1,3 +1,6 @@
+// Please make sure to not commit changes to this file.
+// Leave it as found for other contributors to use.
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ManuallyTestInHere } from './manual-test.tsx'
