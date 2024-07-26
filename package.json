@@ -1,0 +1,14 @@
+{
+	"name": "ezreact",
+	"version": "1.0.0",
+	"description": "Collection of React utilities (hooks and components) that you can copy and paste in your projects for easier and faster development of React applications.",
+	"author": "Ivan Atias",
+	"main": "index.js",
+	"scripts": {},
+	"keywords": ["React", "Hooks", "Components", "Utilities", "Collection"],
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"vitest": "1.6.0"
+	}
+}
