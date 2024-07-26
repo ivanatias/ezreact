@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ManuallyTestInHere } from './App.tsx'
+import { ManuallyTestInHere } from './manually-test-here.tsx'
 import './index.css'
 
 // biome-ignore lint/style/noNonNullAssertion: <just ignore>
