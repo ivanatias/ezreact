@@ -15,11 +15,11 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
 
-  main:
+  packages/main:
     dependencies:
       ezreact-root:
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       react:
         specifier: 18.3.1
         version: 18.3.1
