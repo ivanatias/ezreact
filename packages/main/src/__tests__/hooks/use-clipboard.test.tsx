@@ -1,6 +1,6 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { useClipboard } from '../../lib/ts/hooks/use-clipboard'
+import { useClipboard } from 'lib/ts/hooks/use-clipboard'
 
 describe('useClipboard', () => {
   it('should copy text to clipboard', async () => {
