@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
 import { useSynchronizedState } from '@/lib/ts/hooks/use-synchronized-state'
-import { MockBroadcastChannel } from '../utils/mock-broadcast-channel'
+import { MockBroadcastChannel, allListeners } from '../utils/mock-broadcast-channel'
 
 describe('useSynchronizedState', () => {
   beforeEach(() => {
@@ -13,6 +13,7 @@ describe('useSynchronizedState', () => {
 
   afterEach(() => {
     vi.restoreAllMocks()
+    allListeners.length = 0
   })
 
   it('should render provided initial state', () => {
