@@ -3,17 +3,12 @@ import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
 import { useSynchronizedState } from '@/lib/ts/hooks/use-synchronized-state'
 import { MockBroadcastChannel } from '../utils/mock-broadcast-channel'
-import type { MockInstance } from 'vitest'
 
 describe('useSynchronizedState', () => {
-  let broadcastChannelSpy: MockInstance<[name: string], BroadcastChannel>
-
   beforeEach(() => {
-    broadcastChannelSpy = vi
-      .spyOn(window, 'BroadcastChannel')
-      .mockImplementation(
-        () => new MockBroadcastChannel('test') as unknown as BroadcastChannel
-      )
+    vi.spyOn(window, 'BroadcastChannel').mockImplementation(
+      () => new MockBroadcastChannel('test') as unknown as BroadcastChannel
+    )
   })
 
   afterEach(() => {
@@ -59,7 +54,7 @@ describe('useSynchronizedState', () => {
       </>
     )
 
-    expect(broadcastChannelSpy).toHaveBeenCalledWith('test')
+    expect(window.BroadcastChannel).toHaveBeenCalledWith('test')
     expect(screen.getAllByRole('heading', { name: 'test' })).toHaveLength(2)
     await userEvent.click(
       screen.getAllByRole('button', { name: 'Update' }).at(0) as Element
@@ -98,7 +93,7 @@ describe('useSynchronizedState', () => {
       </>
     )
 
-    expect(broadcastChannelSpy).toHaveBeenCalledWith('test')
+    expect(window.BroadcastChannel).toHaveBeenCalledWith('test')
     expect(screen.getAllByRole('heading', { name: 'test' })).toHaveLength(2)
     await userEvent.click(
       screen.getAllByRole('button', { name: 'Update' }).at(0) as Element
