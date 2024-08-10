@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 export function useSynchronizedState({ initialState, key, track }) {
-  const [state, setState] = useState(() => initialState)
+  const [state, setState] = useState(initialState)
   const emitterChannelRef = useRef(null)
   const receiverChannelRef = useRef(null)
   const lastTrackedState = useRef(undefined)

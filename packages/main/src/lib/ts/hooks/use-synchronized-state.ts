@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 type UseSynchronizedStateOptions<StateType> = {
   key: string
-  initialState?: StateType
+  initialState?: StateType | (() => StateType)
   track?: StateType
 }
 
@@ -11,7 +11,7 @@ export function useSynchronizedState<StateType>({
   key,
   track
 }: UseSynchronizedStateOptions<StateType>) {
-  const [state, setState] = useState<StateType | undefined>(() => initialState)
+  const [state, setState] = useState<StateType | undefined>(initialState)
   const emitterChannelRef = useRef<BroadcastChannel | null>(null)
   const receiverChannelRef = useRef<BroadcastChannel | null>(null)
   const lastTrackedState = useRef<StateType | undefined>(undefined)
