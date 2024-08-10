@@ -1,7 +1,7 @@
 // biome-ignore lint/suspicious/noExplicitAny: <ignore>
 type Listener = ({ data }: { data: any }) => void
 
-let allListeners = [] as unknown as {
+let allListeners = [] as {
   channelKey: string
   event: 'message' | 'messageerror'
   listener: Listener
