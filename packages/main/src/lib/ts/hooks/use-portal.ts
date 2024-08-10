@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, type ReactPortal, type ReactNode } from 'react'
 
 const isServer = typeof window === 'undefined'
 export const PORTAL_CONTAINER_TEST_ID = 'portal-container'
@@ -24,8 +24,8 @@ export function usePortal() {
   }, [wrapperElement])
 
   return {
-    renderPortal: (children: React.ReactNode) => {
-      return createPortal(children, wrapperElement as HTMLDivElement)
+    renderPortal: (children: ReactNode): ReactPortal | null => {
+      return wrapperElement === null ? null : createPortal(children, wrapperElement)
     }
   }
 }

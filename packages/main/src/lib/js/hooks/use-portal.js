@@ -25,7 +25,7 @@ export function usePortal() {
 
   return {
     renderPortal: (children) => {
-      return createPortal(children, wrapperElement)
+      return wrapperElement === null ? null : createPortal(children, wrapperElement)
     }
   }
 }
