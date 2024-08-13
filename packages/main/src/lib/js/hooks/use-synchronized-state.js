@@ -48,11 +48,6 @@ export function useSynchronizedState({ initialState, key, track }) {
   }, [key])
 
   useEffect(() => {
-    if (track === undefined) return
-    broadcast(track)
-  }, [track, broadcast])
-
-  useEffect(() => {
     return () => {
       if (receiverChannelRef.current !== null && emitterChannelRef.current !== null) {
         emitterChannelRef.current.close()
@@ -62,6 +57,8 @@ export function useSynchronizedState({ initialState, key, track }) {
       }
     }
   }, [])
+
+  if (track !== undefined) broadcast(track)
 
   return { state, broadcast }
 }
