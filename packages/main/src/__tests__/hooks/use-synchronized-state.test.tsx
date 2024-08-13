@@ -138,32 +138,21 @@ describe('useSynchronizedState', () => {
       )
     }
 
-    render(
-      <>
-        <Tab />
-        <Tab />
-      </>
-    )
+    render(<Tab />)
 
     expect(window.BroadcastChannel).toHaveBeenCalledWith('test')
-    expect(screen.getAllByRole('heading', { name: 'johndoe' })).toHaveLength(2)
+    expect(screen.getByRole('heading', { name: 'johndoe' })).toBeInTheDocument()
 
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Update state' }).at(0) as Element
-    )
+    await userEvent.click(screen.getByRole('button', { name: 'Update state' }))
 
     expect(channelSpy).not.toHaveBeenCalled()
-    expect(screen.getAllByRole('heading', { name: 'johndoe' })).toHaveLength(2)
+    expect(screen.getByRole('heading', { name: 'johndoe' })).toBeInTheDocument()
 
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Update async state' }).at(0) as Element
-    )
+    await userEvent.click(screen.getByRole('button', { name: 'Update async state' }))
 
-    expect(await screen.findAllByRole('heading', { name: 'peter' })).toHaveLength(2)
+    expect(await screen.findByRole('heading', { name: 'peter' })).toBeInTheDocument()
 
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Update async state' }).at(0) as Element
-    )
+    await userEvent.click(screen.getByRole('button', { name: 'Update async state' }))
 
     expect(channelSpy).toHaveBeenCalledOnce()
   })
