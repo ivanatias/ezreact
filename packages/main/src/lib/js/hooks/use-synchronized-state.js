@@ -5,8 +5,9 @@ export function useSynchronizedState({ initialState, key, track }) {
   const emitterChannelRef = useRef(null)
   const receiverChannelRef = useRef(null)
   const lastTrackedState = useRef(undefined)
+  const isFirstRender = useRef(true)
 
-  if (lastTrackedState.current === undefined) {
+  if (lastTrackedState.current === undefined && isFirstRender.current) {
     lastTrackedState.current =
       typeof initialState === 'function' ? initialState() : initialState
   }
@@ -37,6 +38,8 @@ export function useSynchronizedState({ initialState, key, track }) {
 
     receiverChannelRef.current?.addEventListener('message', onMessage)
     receiverChannelRef.current?.addEventListener('messageerror', onMessageError)
+
+    isFirstRender.current = false
 
     return () => {
       receiverChannelRef.current?.removeEventListener('message', onMessage)

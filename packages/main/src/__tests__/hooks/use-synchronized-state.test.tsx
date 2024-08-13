@@ -167,4 +167,46 @@ describe('useSynchronizedState', () => {
 
     expect(channelSpy).toHaveBeenCalledOnce()
   })
+
+  it('should not reinitialize last tracked state reference after the first render', async () => {
+    const Tab = () => {
+      const { state, broadcast } = useSynchronizedState({
+        initialState: 'test',
+        key: 'test'
+      })
+
+      return (
+        <>
+          <button
+            type='button'
+            onClick={() => {
+              broadcast('test')
+            }}
+          >
+            Reset to initial state
+          </button>
+          <h1>{state ?? 'undefined'}</h1>
+          <button
+            type='button'
+            onClick={() => {
+              broadcast(undefined as unknown as string)
+            }}
+          >
+            Make state undefined
+          </button>
+        </>
+      )
+    }
+
+    render(<Tab />)
+
+    expect(window.BroadcastChannel).toHaveBeenCalledWith('test')
+    expect(screen.getByText('test')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Make state undefined' }))
+    expect(await screen.findByText('undefined')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Reset to initial state' }))
+    expect(await screen.findByText('test')).toBeInTheDocument()
+  })
 })
