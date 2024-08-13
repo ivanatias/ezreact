@@ -16,10 +16,21 @@ export function useSynchronizedState<StateType>({
   const receiverChannelRef = useRef<BroadcastChannel | null>(null)
   const lastTrackedState = useRef<StateType | undefined>(undefined)
 
+  if (lastTrackedState.current === undefined) {
+    lastTrackedState.current =
+      typeof initialState === 'function'
+        ? (initialState as () => StateType)()
+        : initialState
+  }
+
   const broadcast = useCallback((message: StateType) => {
-    if (emitterChannelRef.current === null) return
-    emitterChannelRef.current.postMessage(message)
-    lastTrackedState.current = message
+    if (
+      emitterChannelRef.current !== null &&
+      JSON.stringify(message) !== JSON.stringify(lastTrackedState.current)
+    ) {
+      lastTrackedState.current = message
+      emitterChannelRef.current.postMessage(message)
+    }
   }, [])
 
   useEffect(() => {
@@ -46,12 +57,7 @@ export function useSynchronizedState<StateType>({
   }, [key])
 
   useEffect(() => {
-    if (
-      JSON.stringify(track) === JSON.stringify(lastTrackedState.current) ||
-      track === undefined
-    ) {
-      return
-    }
+    if (track === undefined) return
     broadcast(track)
   }, [track, broadcast])
 

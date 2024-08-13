@@ -101,4 +101,70 @@ describe('useSynchronizedState', () => {
     )
     expect(await screen.findAllByRole('heading', { name: 'updated' })).toHaveLength(2)
   })
+
+  it('should not update the state if the exact same state content is provided', async () => {
+    const channelSpy = vi.spyOn(MockBroadcastChannel.prototype, 'postMessage')
+
+    const Tab = () => {
+      const [asyncState, setAsyncState] = useState<{ username: string } | undefined>(
+        undefined
+      )
+      const { state, broadcast } = useSynchronizedState({
+        initialState: { username: 'johndoe' },
+        key: 'test',
+        track: asyncState
+      })
+
+      return (
+        <>
+          <button
+            type='button'
+            onClick={() => {
+              Promise.resolve({ username: 'peter' }).then(setAsyncState)
+            }}
+          >
+            Update async state
+          </button>
+          <button
+            type='button'
+            onClick={() => {
+              broadcast({ username: 'johndoe' })
+            }}
+          >
+            Update state
+          </button>
+          <h1>{state?.username}</h1>
+        </>
+      )
+    }
+
+    render(
+      <>
+        <Tab />
+        <Tab />
+      </>
+    )
+
+    expect(window.BroadcastChannel).toHaveBeenCalledWith('test')
+    expect(screen.getAllByRole('heading', { name: 'johndoe' })).toHaveLength(2)
+
+    await userEvent.click(
+      screen.getAllByRole('button', { name: 'Update state' }).at(0) as Element
+    )
+
+    expect(channelSpy).not.toHaveBeenCalled()
+    expect(screen.getAllByRole('heading', { name: 'johndoe' })).toHaveLength(2)
+
+    await userEvent.click(
+      screen.getAllByRole('button', { name: 'Update async state' }).at(0) as Element
+    )
+
+    expect(await screen.findAllByRole('heading', { name: 'peter' })).toHaveLength(2)
+
+    await userEvent.click(
+      screen.getAllByRole('button', { name: 'Update async state' }).at(0) as Element
+    )
+
+    expect(channelSpy).toHaveBeenCalledOnce()
+  })
 })
