@@ -33,7 +33,7 @@ export class MockBroadcastChannel {
   // biome-ignore lint/suspicious/noExplicitAny: <ignore>
   postMessage(message: any) {
     if (this.isChannelClosed) {
-      throw new Error('Can not post a message on a closed channel')
+      throw new Error('Cannot post a message on a closed channel')
     }
 
     for (const { channelKey, listener, source } of allListeners) {
