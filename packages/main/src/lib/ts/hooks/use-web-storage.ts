@@ -113,7 +113,7 @@ export function useWebStorage<StateType>({
   }, [storage, storageKey])
 
   return {
-    state: JSON.parse(store ?? 'null'),
+    state: JSON.parse(store ?? 'null') as StateType | null,
     setItemValue,
     removeItem
   }
