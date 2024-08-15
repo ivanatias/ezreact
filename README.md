@@ -28,7 +28,7 @@ Hosts the documentation site for both the utilities and the CLI. Here, you can f
 
 All kind of contributions are welcome and appreciated!
 
-Before contributing, please read the [CONTRIBUTING.md file](CONTRIBUTING.md)
+Before contributing, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file
 
 ## License
 
