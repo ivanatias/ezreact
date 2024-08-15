@@ -108,9 +108,9 @@ export function useWebStorage<StateType>({
     [storage, storageKey, initialState]
   )
 
-  const removeItem = () => {
+  const removeItem = useCallback(() => {
     removeValueFromStorage({ storageKey, storage })
-  }
+  }, [storage, storageKey])
 
   return {
     state: store !== null ? (JSON.parse(store ?? 'null') as StateType) : null,
