@@ -90,7 +90,7 @@ export function useWebStorage({ storageKey, initialState, storage = 'localStorag
   }, [storage, storageKey])
 
   return {
-    state: store !== null ? JSON.parse(store ?? 'null') : null,
+    state: JSON.parse(store ?? 'null'),
     setItemValue,
     removeItem
   }
