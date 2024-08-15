@@ -11,8 +11,8 @@ const subscribe = (callback) => {
   }
 }
 
-const getStorageValue = ({ key, storage }) => {
-  return window[storage].getItem(key)
+const getStorageValue = ({ storageKey, storage }) => {
+  return window[storage].getItem(storageKey)
 }
 
 const setValueToStorage = ({ storageKey, storage, value }) => {
@@ -34,7 +34,7 @@ const valueIsFunction = (value) => typeof value === 'function'
 export function useWebStorage({ storageKey, initialState, storage = 'localStorage' }) {
   const store = useSyncExternalStore(
     subscribe,
-    () => getStorageValue({ key: storageKey, storage }),
+    () => getStorageValue({ storageKey, storage }),
     () => JSON.stringify(initialState ?? null)
   )
   const storeRef = useRef(store)
@@ -42,7 +42,7 @@ export function useWebStorage({ storageKey, initialState, storage = 'localStorag
 
   useEffect(() => {
     if (
-      getStorageValue({ key: storageKey, storage }) === null &&
+      getStorageValue({ storageKey, storage }) === null &&
       initialState !== undefined &&
       isFirstRender.current
     ) {
