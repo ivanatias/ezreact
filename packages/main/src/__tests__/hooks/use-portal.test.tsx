@@ -1,5 +1,5 @@
-import { render, within, screen } from '@testing-library/react'
-import { usePortal, PORTAL_CONTAINER_TEST_ID } from 'lib/ts/hooks/use-portal'
+import { render, within } from '@testing-library/react'
+import { usePortal } from 'lib/ts/hooks/use-portal'
 
 describe('usePortal', () => {
   it('should render a portal container and an element inside it', () => {
@@ -10,10 +10,14 @@ describe('usePortal', () => {
       return renderPortal(<PortalContent />)
     }
 
-    render(<Parent />)
+    const { baseElement } = render(<Parent />)
 
-    expect(
-      within(screen.getByTestId(PORTAL_CONTAINER_TEST_ID)).getByText('Test')
-    ).toBeInTheDocument()
+    // Since the portal container is the only node with child elements
+    // we can use this to find it
+    const [portalContainer] = Array.from(baseElement.querySelectorAll('div')).filter(
+      ($el) => $el.childElementCount > 0
+    )
+
+    expect(within(portalContainer).getByText('Test')).toBeInTheDocument()
   })
 })
