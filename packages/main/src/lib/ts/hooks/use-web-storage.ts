@@ -67,13 +67,13 @@ export function useWebStorage<StateType>({
   useEffect(() => {
     if (
       getStorageValue({ storageKey, storage }) === null &&
-      initialState !== undefined &&
+      initialStateRef.current !== undefined &&
       isFirstRender.current
     ) {
-      setValueToStorage({ storageKey, storage, value: initialState })
+      setValueToStorage({ storageKey, storage, value: initialStateRef.current })
     }
     isFirstRender.current = false
-  }, [initialState, storageKey, storage])
+  }, [storageKey, storage])
 
   useEffect(() => {
     storeRef.current = store
