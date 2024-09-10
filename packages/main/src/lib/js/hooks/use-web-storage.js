@@ -38,6 +38,7 @@ export function useWebStorage({ storageKey, initialState, storage = 'localStorag
     () => JSON.stringify(initialState ?? null)
   )
   const storeRef = useRef(store)
+  const initialStateRef = useRef(initialState)
   const isFirstRender = useRef(true)
 
   useEffect(() => {
@@ -67,7 +68,7 @@ export function useWebStorage({ storageKey, initialState, storage = 'localStorag
       let newValue = null
 
       if (valueIsFunction(value)) {
-        if (storeRef.current === null && initialState === undefined) {
+        if (storeRef.current === null && initialStateRef.current === undefined) {
           throw new TypeError(
             `Cannot call ${value.name} as the store's value is null and no initial state was provided`
           )
@@ -75,14 +76,14 @@ export function useWebStorage({ storageKey, initialState, storage = 'localStorag
         newValue =
           storeRef.current !== null
             ? value(JSON.parse(storeRef.current))
-            : value(initialState)
+            : value(initialStateRef.current)
       } else {
         newValue = value
       }
 
       setValueToStorage({ storageKey, storage, value: newValue })
     },
-    [storage, storageKey, initialState]
+    [storage, storageKey]
   )
 
   const removeItem = useCallback(() => {
