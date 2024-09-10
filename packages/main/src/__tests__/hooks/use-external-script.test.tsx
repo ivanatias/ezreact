@@ -15,9 +15,19 @@ describe('useExternalScript', () => {
     }
 
     const { baseElement } = render(<Component />)
+
     await waitForElementToBeRemoved(() => screen.queryByText('Loading script'))
     expect(screen.getByText('Script loaded')).toBeInTheDocument()
-    expect(baseElement.querySelector('script')).toBeInTheDocument()
+
+    const script = baseElement.querySelector('script')
+
+    expect(script).toBeInTheDocument()
+    expect(script).toHaveAttribute(
+      'src',
+      'https://unpkg.com/hello-world-test-for-npm@1.0.1/index.js'
+    )
+    expect(script).toHaveAttribute('async', 'true')
+
     vi.restoreAllMocks()
   })
 })
