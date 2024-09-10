@@ -23,11 +23,11 @@ export function usePrevious({
   useEffect(() => {
     if (!debug) return
     if (allPreviousValues.size === 0) {
-      console.info('[usePreviousValue DEBUG]: No previous values')
+      console.info('[usePrevious DEBUG]: No previous values')
       return
     }
 
-    console.log('[usePreviousValue DEBUG]:')
+    console.log('[usePrevious DEBUG]:')
 
     for (const [key, value] of allPreviousValues) {
       console.info(`Entry key: ${key}, Value: ${value}`)

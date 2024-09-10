@@ -124,9 +124,7 @@ describe('usePrevious', () => {
     render(<Component />)
 
     expect(consoleInfoSpy).toHaveBeenCalledOnce()
-    expect(consoleInfoSpy).toHaveBeenCalledWith(
-      '[usePreviousValue DEBUG]: No previous values'
-    )
+    expect(consoleInfoSpy).toHaveBeenCalledWith('[usePrevious DEBUG]: No previous values')
 
     await userEvent.click(screen.getByRole('button', { name: 'Increment count' }))
 
