@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 export function usePrevious({
   value,
@@ -36,5 +36,11 @@ export function usePrevious({
     console.log('_________________')
   }, [allPreviousValues, debug])
 
-  return { previousValue, allPreviousValues: Array.from(allPreviousValues.entries()) }
+  return {
+    previousValue,
+    allPreviousValues: useMemo(
+      () => Array.from(allPreviousValues.entries()),
+      [allPreviousValues]
+    )
+  }
 }
