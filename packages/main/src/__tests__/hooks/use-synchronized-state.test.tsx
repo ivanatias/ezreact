@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
-import { useSynchronizedState } from '@/lib/ts/hooks/use-synchronized-state'
+import { useSynchronizedState } from 'lib/ts/hooks/use-synchronized-state'
 import { MockBroadcastChannel, allListeners } from '../utils/mock-broadcast-channel'
 
 describe('useSynchronizedState', () => {

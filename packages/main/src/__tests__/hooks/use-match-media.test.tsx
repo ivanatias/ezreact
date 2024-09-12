@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
-import { useMatchMedia } from '@/lib/ts/hooks/use-match-media'
+import { useMatchMedia } from 'lib/ts/hooks/use-match-media'
 import { listeners, mockMatchMedia } from '../utils/mock-match-media'
 
 describe('useMatchMedia', () => {
