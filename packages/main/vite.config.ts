@@ -9,7 +9,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': root,
       lib: resolve(root, 'lib')
     }
   }
