@@ -9,7 +9,7 @@ export async function getUtility({ name, type = 'hooks' } = {}) {
   const response = await fetch(endpoint)
 
   if (!response.ok) {
-    if (response.status === 404) throw new Error(`Utility ${name}.${ext} not found!`)
+    if (response.status === 404) throw new Error(`Utility ${name} not found!`)
     throw new Error('Something went wrong retrieving the utility. Try again!')
   }
 
