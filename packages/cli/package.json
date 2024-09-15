@@ -7,6 +7,21 @@
 	"main": "src/index.js",
 	"bin": "src/index.js",
 	"files": ["src/index.js"],
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ivanatias/ezreact.git"
+	},
+	"homepage": "https://github.com/ivanatias/ezreact#readme",
+	"bugs": {
+		"url": "https://github.com/ivanatias/ezreact/issues"
+	},
+	"release": {
+		"branches": ["main"]
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"start": "node src/index.js"
 	},
