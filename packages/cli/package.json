@@ -1,12 +1,12 @@
 {
 	"name": "@ivnatsr/ezreact",
 	"description": "Add EzReact's components and hooks utilities to your React projects.",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"author": "Ivan Atias <ivan.d.atias@gmail.com>",
 	"type": "module",
 	"main": "src/index.js",
 	"bin": "src/index.js",
-	"files": ["src/index.js"],
+	"files": ["src"],
 	"private": false,
 	"repository": {
 		"type": "git",
