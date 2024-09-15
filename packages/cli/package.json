@@ -1,0 +1,25 @@
+{
+	"name": "@ivnatsr/ezreact-cli",
+	"description": "Add EzReact's components and hooks utilities to your React projects.",
+	"version": "0.1.0",
+	"author": "Ivan Atias <ivan.d.atias@gmail.com>",
+	"type": "module",
+	"main": "src/index.js",
+	"bin": "src/index.js",
+	"files": ["src/index.js"],
+	"scripts": {
+		"start": "node src/index.js"
+	},
+	"keywords": ["cli", "react", "components", "hooks", "utilities"],
+	"license": "MIT",
+	"dependencies": {
+		"@ivnatsr/color-logs": "1.0.3",
+		"@ivnatsr/trythis": "0.1.8",
+		"commander": "12.1.0",
+		"figlet": "1.7.0",
+		"node-fetch": "3.3.2",
+		"prompts": "2.4.2",
+		"yocto-spinner": "0.1.0",
+		"zod": "3.23.8"
+	}
+}
