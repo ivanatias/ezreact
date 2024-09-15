@@ -1,5 +1,5 @@
 {
-	"name": "@ivnatsr/ezreact-cli",
+	"name": "@ivnatsr/ezreact",
 	"description": "Add EzReact's components and hooks utilities to your React projects.",
 	"version": "0.1.0",
 	"author": "Ivan Atias <ivan.d.atias@gmail.com>",
