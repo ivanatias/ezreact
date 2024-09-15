@@ -4,16 +4,8 @@ EzReact CLI is a command-line interface designed to simplify the process of addi
 
 ## Usage
 
-### Using `npm`
-
 ```bash
-npx @ivnatsr/ezreact [command] [args...] [options]
-```
-
-### Using `pnpm`
-
-```bash
-pnpx @ivnatsr/ezreact [command] [args...] [options]
+npx @ivnatsr/ezreact [command]
 ```
 
 ## Commands 
@@ -23,7 +15,7 @@ pnpx @ivnatsr/ezreact [command] [args...] [options]
 Add EzReact's components and hooks utilities to your React projects.
 
 ```bash
-pnpx @ivnatsr/ezreact add [utilities...] [options]
+npx @ivnatsr/ezreact add [utilities...] [options]
 ```
 
 #### Arguments 
@@ -46,7 +38,7 @@ pnpx @ivnatsr/ezreact add [utilities...] [options]
 To add a hook utility called use-clipboard and a component utility called my-component you can run:
 
 ```bash
-pnpx @ivnatsr/ezreact add use-clipboard my-component --hp src/hooks --cp src/components
+npx @ivnatsr/ezreact add use-clipboard my-component --hp src/hooks --cp src/components
 ```
 
 This command will add the specified utilities to the designated paths in your React project.
