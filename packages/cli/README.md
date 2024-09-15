@@ -4,8 +4,6 @@ EzReact CLI is a command-line interface designed to simplify the process of addi
 
 ## Usage
 
-You can install EzReact CLI globally using either `npm` or `pnpm`:
-
 ### Using `npm`
 
 ```bash
