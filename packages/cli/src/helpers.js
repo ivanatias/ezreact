@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import path from 'node:path'
 
 export function isComponentUtility(name) {
   return name.split('.').pop().endsWith('x')
@@ -25,6 +26,6 @@ export function formatComponentNameForDisplay(component) {
 }
 
 export function getPackageJsonInfo() {
-  const packageJsonContent = readFileSync('package.json', 'utf-8')
+  const packageJsonContent = readFileSync(path.join('package.json'), 'utf-8')
   return JSON.parse(packageJsonContent)
 }
