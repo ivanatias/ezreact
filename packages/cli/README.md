@@ -20,7 +20,7 @@ npx @ivnatsr/ezreact add [utilities...] [options]
 
 #### Arguments 
 
-- `[utilities...]`: The utilities to add to your project. You can specify multiple utilities separated by spaces.
+- `[utilities...]`: The utilities to add to your project. You can specify multiple utilities separated by spaces. If you don't specify any utility, the CLI will provide you with all the available utilities for you to choose from.
 
 #### Options
 
