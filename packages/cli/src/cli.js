@@ -209,15 +209,13 @@ const add = new Command()
 
 export function main() {
   console.log(
-    cl.cyan(
-      figlet.textSync('EzReact CLI', {
-        font: 'Star Wars',
-        horizontalLayout: 'default',
-        verticalLayout: 'default',
-        width: 150,
-        whitespaceBreak: true
-      })
-    )
+    figlet.textSync('EzReact CLI', {
+      font: 'Star Wars',
+      horizontalLayout: 'default',
+      verticalLayout: 'default',
+      width: 150,
+      whitespaceBreak: true
+    })
   )
 
   const packageInfo = getPackageJsonInfo()
