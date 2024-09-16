@@ -219,7 +219,7 @@ export function main() {
 
   const program = new Command()
   program.name('@ivnatsr/ezreact')
-  program.version('0.1.6', '-v, --version', 'Display current CLI version number')
+  program.version('0.1.7', '-v, --version', 'Display current CLI version number')
   program.addCommand(add)
   program.parse()
 }
