@@ -31,14 +31,14 @@ npx @ivnatsr/ezreact add [utilities...] [options]
 ### Other Commands
 
 - `-v, --version`: Display the current version number of EzReact CLI.
-- `--help`: Display help information for EzReact CLI.
+- `-h, --help`: Display help information for EzReact CLI.
 
 ## Examples 
 
 To add a hook utility called use-clipboard and a component utility called my-component you can run:
 
 ```bash
-npx @ivnatsr/ezreact add use-clipboard my-component --hp src/hooks --cp src/components
+npx @ivnatsr/ezreact add use-clipboard my-component -hp src/hooks -cp src/components
 ```
 
 This command will add the specified utilities to the designated paths in your React project.
