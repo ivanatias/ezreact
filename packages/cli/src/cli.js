@@ -11,8 +11,7 @@ import {
   formatComponentNameForDisplay,
   formatHookNameForDisplay,
   isComponentUtility,
-  isHookUtility,
-  getPackageJsonInfo
+  isHookUtility
 } from './helpers.js'
 
 const addOptionsSchema = z.object({
@@ -218,14 +217,9 @@ export function main() {
     })
   )
 
-  const packageInfo = getPackageJsonInfo()
   const program = new Command()
-  program.name(packageInfo.name)
-  program.version(
-    packageInfo.version,
-    '-v, --version',
-    'Display current CLI version number'
-  )
+  program.name('@ivnatsr/ezreact')
+  program.version('0.1.6', '-v, --version', 'Display current CLI version number')
   program.addCommand(add)
   program.parse()
 }
