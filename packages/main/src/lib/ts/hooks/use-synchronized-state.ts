@@ -14,15 +14,11 @@ export function useSynchronizedState<StateType>({
   const [state, setState] = useState<StateType | undefined>(initialState)
   const emitterChannelRef = useRef<BroadcastChannel | null>(null)
   const receiverChannelRef = useRef<BroadcastChannel | null>(null)
-  const lastTrackedState = useRef<StateType | undefined>(undefined)
-  const isFirstRender = useRef(true)
-
-  if (lastTrackedState.current === undefined && isFirstRender.current) {
-    lastTrackedState.current =
-      typeof initialState === 'function'
-        ? (initialState as () => StateType)()
-        : initialState
-  }
+  const lastTrackedState = useRef<StateType | undefined>(
+    typeof initialState === 'function'
+      ? (initialState as () => StateType)()
+      : initialState
+  )
 
   const broadcast = useCallback((message: StateType) => {
     if (
@@ -50,8 +46,6 @@ export function useSynchronizedState<StateType>({
 
     receiverChannelRef.current?.addEventListener('message', onMessage)
     receiverChannelRef.current?.addEventListener('messageerror', onMessageError)
-
-    isFirstRender.current = false
 
     return () => {
       receiverChannelRef.current?.removeEventListener('message', onMessage)
