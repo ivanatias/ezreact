@@ -42,7 +42,11 @@ const PortalExample = () => {
   return (
     <div>
       <h1>Main Content</h1>
-      {renderPortal(<div style={{ background: 'lightblue', padding: '20px' }}>This is a portal!</div>)}
+      {renderPortal(
+        <div style={{ background: 'lightblue', padding: '20px' }}>
+          This is a portal!
+        </div>
+      )}
     </div>
   )
 }
