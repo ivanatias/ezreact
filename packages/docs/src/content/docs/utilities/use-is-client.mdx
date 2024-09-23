@@ -37,15 +37,13 @@ This hook returns a boolean value:
 ```jsx
 import { useIsClient } from './path/to/use-is-client'
 
-const ClientCheckExample = () => {
+const ClientOnlyExample = () => {
   const isClient = useIsClient()
 
-  if (!isClient) {
-    return <p>Welcome to the server-side!</p>
-  }
+  if (!isClient) return null
 
   return <p>Welcome to the client-side!</p>
 }
 
-export default ClientCheckExample
+export default ClientOnlyExample
 ```
