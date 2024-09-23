@@ -48,7 +48,7 @@ const SynchronizedStateExample = () => {
   const count = useRef(0)
   const { state, broadcast } = useSynchronizedState({
     key: 'example-channel',
-    initialState: count
+    initialState: count.current
   })
 
   const increment = () => {
