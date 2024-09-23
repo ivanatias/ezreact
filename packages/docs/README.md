@@ -1,4 +1,4 @@
-![EzReact Banner](./media/repo-header.png)
+![EzReact Banner](../../media/repo-header.png)
 
 # EzReact - React Hooks and Components that you can copy and paste in your projects
 
