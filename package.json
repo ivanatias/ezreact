@@ -7,6 +7,11 @@
 	"scripts": {
 		"test:main-watch": "pnpm -C packages/main test:watch",
 		"test:main-once": "pnpm -C packages/main test:once",
+		"start:cli": "pnpm -C packages/cli start",
+		"dev:docs": "pnpm -C packages/docs dev",
+		"build:docs": "pnpm -C packages/docs build",
+		"start:docs": "pnpm -C packages/docs start",
+		"preview:docs": "pnpm -C packages/docs preview",
 		"lint:all": "pnpx @biomejs/biome lint",
 		"format:all": "pnpx @biomejs/biome format --write",
 		"check:all": "pnpx @biomejs/biome check --write"
