@@ -1,0 +1,51 @@
+---
+title: useIsClient
+description: The useIsClient hook determines whether the code is being executed in a client environment (browser) or on the server. This is particularly useful for handling client-specific logic in a Server-side rendered React application.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useIsClient` hook determines whether the code is being executed in a client environment (browser) or on the server. This is particularly useful for handling client-specific logic in a Server-side rendered React application.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-is-client' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-is-client' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-is-client' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return
+
+This hook returns a boolean value:
+
+- `true` if the code is running in a client environment (browser).
+- `false` if the code is running on the server.
+
+## Example
+
+```jsx
+import { useIsClient } from './path/to/use-is-client'
+
+const ClientCheckExample = () => {
+  const isClient = useIsClient()
+
+  if (!isClient) {
+    return <p>Welcome to the server-side!</p>
+  }
+
+  return <p>Welcome to the client-side!</p>
+}
+
+export default ClientCheckExample
+```

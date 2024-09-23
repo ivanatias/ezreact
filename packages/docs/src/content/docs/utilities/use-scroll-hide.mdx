@@ -1,0 +1,49 @@
+---
+title: useScrollHide
+description: The useScrollHide hook allows you to hide the scrollbars of a specified HTML element or the body of the document. This can be useful for modals or overlays where you want to prevent background scrolling.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useScrollHide` hook allows you to hide the scrollbars of a specified HTML element or the body of the document. This can be useful for modals or overlays where you want to prevent background scrolling.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-scroll-hide' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-scroll-hide' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-scroll-hide' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return
+
+This hook returns a ref that should be attached to the element whose scroll behavior you want to control. If you don't attach this ref to any DOM element, it will default to `body`.
+
+## Example
+
+```jsx
+import { useScrollHide } from './path/to/use-scroll-hide'
+
+const ScrollHideExample = () => {
+  const elementRef = useScrollHide()
+
+  return (
+    <div ref={elementRef}>
+      <h1>Content with hidden scrollbars</h1>
+      <p>Scrollbars are hidden for this element.</p>
+    </div>
+  )
+}
+
+export default ScrollHideExample
+```

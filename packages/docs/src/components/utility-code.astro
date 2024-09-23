@@ -1,0 +1,25 @@
+---
+import { Code } from '@astrojs/starlight/components'
+
+export interface Props {
+  name: string
+  lang: 'ts' | 'js'
+  type: 'hooks' | 'components'
+}
+
+const { name, lang, type } = Astro.props
+
+const URL = `https://api.github.com/repos/ivanatias/ezreact/contents/packages/main/src/lib/${lang}/${type}/${name}.${lang}${type === 'hooks' ? '' : 'x'}`
+
+const response = await fetch(URL)
+
+if (!response.ok) {
+  throw new Error(`Something went wrong retrieving ${name} utility`)
+}
+
+const { content: base64Content } = await response.json()
+const buffer = Buffer.from(base64Content, 'base64')
+const code = buffer.toString('utf-8')
+---
+
+<Code code={code} lang={lang} />

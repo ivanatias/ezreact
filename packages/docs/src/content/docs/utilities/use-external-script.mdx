@@ -1,0 +1,64 @@
+---
+title: useExternalScript
+description: The useExternalScript hook allows you to dynamically load an external script in your React component.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useExternalScript` hook allows you to dynamically load an external script in your React component.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-external-script' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-external-script' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-external-script' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return
+
+This hook returns an object containing the following properties:
+
+- `loading`: A boolean indicating whether the script is currently loading.
+- `error`: A boolean indicating whether there was an error loading the script.
+- `retryScriptLoad`: A function that can be called to retry loading the script.
+
+## Parameters
+
+- `src`: A string representing the URL of the external script to load.
+
+## Example
+
+```jsx
+import React from 'react'
+import { useExternalScript } from './path/to/use-external-script'
+
+const ExternalScriptExample = () => {
+  const { loading, error, retryScriptLoad } = useExternalScript('https://example.com/external-script.js')
+
+  if (loading) return <p>Loading script...</p>
+
+  if (error) {
+    return (
+      <div>
+        <p>Error loading script</p>
+        <button onClick={retryScriptLoad}>Retry</button>
+      <div>  
+    )
+  }
+
+  return <p>Script loaded successfully</p>
+}
+
+export default ExternalScriptExample
+```

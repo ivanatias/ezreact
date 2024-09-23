@@ -1,0 +1,56 @@
+---
+title: usePageVisibility
+description: The usePageVisibility hook allows you to detect when the page visibility changes, enabling you to execute a callback function based on whether the page is hidden or visible.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `usePageVisibility` hook allows you to detect when the page visibility changes, enabling you to execute a callback function based on whether the page is hidden or visible.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-page-visibility' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-page-visibility' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-page-visibility' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return 
+
+This hook returns `void`.
+
+## Parameters
+
+- `callback`: A function that will be called with a boolean argument indicating whether the page is hidden or visible. This function can also return a promise.
+
+## Example
+
+```jsx
+import { usePageVisibility } from './path/to/use-page-visibility'
+
+const PageVisibilityExample = () => {
+  const handleVisibilityChange = (isHidden) => {
+    if (isHidden) {
+      console.log('Page is hidden')
+    } else {
+      console.log('Page is visible')
+    }
+  }
+
+  usePageVisibility(handleVisibilityChange)
+
+  return <p>Check the console for visibility changes.</p>
+}
+
+export default PageVisibilityExample
+```

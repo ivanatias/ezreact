@@ -1,0 +1,67 @@
+---
+title: useSynchronizedState
+description: The useSynchronizedState hook allows you to synchronize async or sync states across different tabs or windows in a web application using the Broadcast Channel API. This is useful for sharing state between multiple instances of your application.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useSynchronizedState` hook allows you to synchronize async or sync states across different tabs or windows in a web application using the Broadcast Channel API. This is useful for sharing state between multiple instances of your application.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-synchronized-state' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-synchronized-state' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-synchronized-state' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Parameters
+
+- `key`: A string that serves as the key for the Broadcast Channel.
+- `initialState` (optional): The initial state value or a function that returns the initial state.
+- `track` (optional): A state value that, when changed, will trigger a broadcast to other tabs or windows. Useful for tracking **asynchronous states**. If provided, you don't need to manually broadcast updates through the channel, since the hook will perform this action automatically.
+
+## Return
+
+This hook returns an object containing:
+
+- `state`: The current synchronized state.
+- `broadcast`: A function that can be called to manually broadcast a new state value.
+
+## Example
+
+```jsx
+import { useRef } from 'react'
+import { useSynchronizedState } from './path/to/use-synchronized-state'
+
+const SynchronizedStateExample = () => {
+  const count = useRef(0)
+  const { state, broadcast } = useSynchronizedState({
+    key: 'example-channel',
+    initialState: count
+  })
+
+  const increment = () => {
+    broadcast(++count.current)
+  }
+
+  return (
+    <div>
+      <h1>Current Count: {state}</h1>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+
+export default SynchronizedStateExample
+```

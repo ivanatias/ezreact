@@ -1,0 +1,51 @@
+---
+title: usePortal
+description: The usePortal hook provides a way to create a portal in React, allowing you to render children into a DOM node that exists outside the hierarchy of the parent component. This is useful for modals, tooltips, and other UI elements that need to break out of their parent container.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `usePortal` hook provides a way to create a portal in React, allowing you to render children into a DOM node that exists outside the hierarchy of the parent component. This is useful for modals, tooltips, and other UI elements that need to break out of their parent container.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-portal' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-portal' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-portal' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return
+
+This hook returns an object containing the following method:
+
+- `renderPortal`: A function that takes `children` as an argument and returns a React portal. If the `wrapperElement` is `null`, it returns `null`.
+
+## Example
+
+```jsx
+import { usePortal } from './path/to/use-portal'
+
+const PortalExample = () => {
+  const { renderPortal } = usePortal()
+
+  return (
+    <div>
+      <h1>Main Content</h1>
+      {renderPortal(<div style={{ background: 'lightblue', padding: '20px' }}>This is a portal!</div>)}
+    </div>
+  )
+}
+
+export default PortalExample
+```

@@ -1,0 +1,57 @@
+---
+title: useMatchMedia
+description: The useMatchMedia hook allows you to listen for changes to a specified media query and execute a callback function whenever the change event for the media query is fired.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useMatchMedia` hook allows you to listen for changes to a specified media query and execute a callback function whenever the change event for the media query is fired.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-match-media' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-match-media' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-match-media' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Return
+
+This hook returns `void`.
+
+## Parameters
+
+- `mediaQuery`: A string representing the media query to match (e.g., `(max-width: 600px)`).
+- `callback`: A function that will be called with a boolean argument indicating whether the media query matches. This function can also return a promise.
+
+## Example
+
+```jsx
+import { useMatchMedia } from './path/to/use-match-media'
+
+const MatchMediaExample = () => {
+  const handleMatchChange = (matches) => {
+    if (matches) {
+      console.log('Media query matched!')
+    } else {
+      console.log('Media query did not match.')
+    }
+  }
+
+  useMatchMedia('(max-width: 600px)', handleMatchChange)
+
+  return <p>Check the console for media query changes.</p>
+}
+
+export default MatchMediaExample
+```

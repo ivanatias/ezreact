@@ -1,0 +1,53 @@
+---
+title: 'Home'
+template: splash
+hero:
+  title: |
+    Dependency free
+    <span
+      class="font-black text-transparent
+        bg-clip-text bg-gradient-to-b
+        from-accent-700 to-accent-400
+        dark:from-accent-500 dark:to-accent-200"
+    >
+      React
+    </span>
+    utilities that you can copy and paste in your projects
+  tagline: Carefully crafted, performant, and well-tested hooks and components for faster and easier development of React applications!  
+  image:
+    alt: EzReact's logo
+    dark: ../../assets/logo-dark.svg
+    light: ../../assets/logo-light.svg
+  actions:
+    - text: Get started
+      link: /getting-started
+      icon: right-arrow
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components'
+import CraftedFor from '../../components/crafted-for.astro'
+
+<CraftedFor />
+
+<CardGrid stagger>
+	<Card title="JavaScript or TypeScript" icon="pencil">
+		Each utility has two versions for you to choose from.
+	</Card>
+	<Card title="Dependency free" icon="approve-check">
+		No extra dependencies. All you need is `react` and `react-dom`!
+	</Card>
+	<Card title="Copy and Paste" icon="document">
+		It's as simple as copying and pasting the utilities that you need for your project.
+	</Card>
+	<Card title="CLI" icon="information">
+		You can also use our [CLI](/cli) to easily add utilities to your project!
+	</Card>
+	<Card title="Compatibility" icon="open-book">
+		If your project uses React v16.8+, then you are good to go!
+	</Card>
+	<Card title="SSR" icon="rocket">
+		Written for SSR compatibility. Works with frameworks like: Next.js, Remix, etc...
+	</Card>
+</CardGrid>
+
+

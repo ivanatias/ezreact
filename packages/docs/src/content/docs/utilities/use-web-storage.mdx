@@ -1,0 +1,63 @@
+---
+title: useWebStorage
+description: The useWebStorage hook provides a way to synchronize state with the browser's `localStorage` or `sessionStorage`. It allows you to easily get, set, and remove items from storage while keeping the state in sync across different tabs or windows.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useWebStorage` hook provides a way to synchronize state with the browser's `localStorage` or `sessionStorage`. It allows you to easily get, set, and remove items from storage while keeping the state in sync across different tabs or windows.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-web-storage' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-web-storage' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-web-storage' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Parameters
+
+- `storageKey`: A string that represents the key under which the value is stored in the web storage.
+- `initialState` (optional): The initial state value to set if the storage is empty.
+- `storage` (optional): A string that specifies which storage to use, either `'localStorage'` or `'sessionStorage'`. Defaults to `'localStorage'`.
+
+## Return
+
+This hook returns an object containing:
+
+- `state`: The current value stored in the specified storage, parsed as the appropriate type or `null` if not found.
+- `setItemValue`: A function to set a new value in the storage. It can accept a value or a function that returns a new value based on the current state.
+- `removeItem`: A function to remove the item from storage.
+
+## Example
+
+```jsx
+import { useWebStorage } from './path/to/use-web-storage'
+
+const WebStorageExample = () => {
+  const { state, setItemValue, removeItem } = useWebStorage({
+    storageKey: 'exampleKey',
+    initialState: 'Hello, World!'
+  })
+
+  return (
+    <div>
+      <h1>Stored Value: {state}</h1>
+      <button onClick={() => setItemValue('New Value')}>Set New Value</button>
+      <button onClick={removeItem}>Remove Item</button>
+    </div>
+  )
+}
+
+export default WebStorageExample
+```

@@ -1,0 +1,61 @@
+---
+title: useClipboard
+description: The useClipboard hook provides a simple way to copy text to the clipboard and manage the copied state in a React component.
+---
+import { Tabs, TabItem, Code } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `useClipboard` hook provides a simple way to copy text to the clipboard and manage the copied state in a React component.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-clipboard' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-clipboard' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-clipboard' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+
+## Return
+
+This hook returns an object containing the following properties:
+
+- `copied`: A boolean that indicates whether the text has been successfully copied to the clipboard.
+- `copyToClipboard`: A function to copy the passed text to the clipboard.
+
+## Parameters
+
+- `resetCopyAfterMs` (optional): A number representing the duration (in milliseconds) after which the `copied` state will reset to `false`. The default value is `300 ms`.
+
+## Example
+
+```jsx
+import { useClipboard } from './path/to/use-clipboard'
+
+const ClipboardExample = () => {
+  const { copied, copyToClipboard } = useClipboard(300)
+
+  const handleCopy = () => {
+    copyToClipboard('Hello, World!')
+  };
+
+  return (
+    <div>
+      <button onClick={handleCopy}>Copy Text</button>
+      {copied && <span>Text copied to clipboard!</span>}
+    </div>
+  )
+}
+
+export default ClipboardExample
+```

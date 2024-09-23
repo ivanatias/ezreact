@@ -1,0 +1,66 @@
+---
+title: usePrevious
+description: The usePrevious hook allows you to keep track of the previous value of a state or prop in a React component. It stores all previous values in a `Map`, which can be useful for debugging or tracking changes over time.
+---
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components'
+import UtilityCode from '../../../components/utility-code.astro'
+
+The `usePrevious` hook allows you to keep track of the previous value of a state or prop in a React component. It stores all previous values in a `Map`, which can be useful for debugging or tracking changes over time.
+
+## Add the utility
+
+<Tabs>
+  <TabItem label='CLI'>
+    <Code code='npx @ivnatsr/ezreact add use-previous' lang='bash' />
+  </TabItem>
+  <TabItem label='Code'>
+      <Tabs>
+        <TabItem label='JavaScript'>
+          <UtilityCode lang='js' name='use-previous' type='hooks' />
+        </TabItem>
+        <TabItem label='TypeScript'>
+          <UtilityCode lang='ts' name='use-previous' type='hooks' />
+        </TabItem>
+      </Tabs>
+  </TabItem>
+</Tabs>
+
+## Parameters
+
+- `value`: The current value to track.
+- `entriesKeysFormatter` (optional): A function that formats the key for each entry in the previous values map. Defaults to a function that returns the current timestamp.
+- `debug` (optional): A boolean that enables debug logging. Defaults to `false`.
+
+## Return
+
+This hook returns an object containing:
+
+- `previousValue`: The previous value of the tracked state or prop.
+- `allPreviousValues`: An array of entries from the map containing all previous values, formatted as `[key, value]`.
+
+## Example
+
+```jsx
+import { usePrevious } from './path/to/use-previous'
+
+const PreviousValueExample = () => {
+  const [count, setCount] = useState(0)
+  const { previousValue, allPreviousValues } = usePrevious({ value: count })
+
+  return (
+    <div>
+      <h1>Current Count: {count}</h1>
+      <h2>Previous Count: {previousValue}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <h3>All Previous Values:</h3>
+      <ul>
+        {allPreviousValues.map(([key, value]) => (
+          <li key={key}>Key: {key}, Value: {value}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default PreviousValueExample
+```
