@@ -19,8 +19,12 @@ npx @ivnatsr/ezreact add [utilities...] [options]
 ```
 
 ### Arguments
+
 - `[utilities...]`: The utilities to add to your project. You can specify multiple utilities separated by spaces. Passing the utilities is **optional**. If you don't specify any utility, the CLI will provide you with all the available utilities for you to choose from.
 Options
+
+### Options
+
 - `-hp, --hooks-path <path>`: Path where hooks utilities should be added. **(Optional)**
 - `-cp, --components-path <path>`: Path where components utilities should be added. **(Optional)**
 - `-ts, --typescript`: Add using TypeScript. **(Optional)**
